@@ -103,5 +103,14 @@ class OfferController extends Controller
 
     //EJEMPLO SOFT DELETE
 
+
     //LIST: MUESTRA TODOS LOS ELEMENTOS DE LA BDD
+    public function list(){
+        $offers = Offer::with('categories')->get(); // con relaciones si las necesitas
+        $categories = Category::all();
+        return Inertia::render('vuelist', [
+            'offers' => $offers,
+            'categories' => $categories,
+        ]);
+    }
 }
