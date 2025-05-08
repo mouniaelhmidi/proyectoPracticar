@@ -18,9 +18,6 @@ console.log(props.offer.categories.name);
 
 //delete con axios 
 const deleteOffer = (id) => {
-    console.log('ID a eliminar:', id);
-    console.log('Ruta generada:', route('offer.delete', { id }));
-
     if (confirm('¿Estás seguro de que deseas eliminar esta oferta?')) {
         axios.post(route('offer.delete', { id }))
             .then(() => {

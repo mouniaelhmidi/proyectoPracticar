@@ -16,6 +16,7 @@ class OfferController extends Controller
         //llamar a los modelos 
         $offers = Offer::all(); //ofertas
         $categories = Category::all(); //categorias el seed
+        
         return Inertia::render('vueadd', [ //addProfe es el nombre de la vista 
             'offers' => $offers,
             'categories' => $categories,

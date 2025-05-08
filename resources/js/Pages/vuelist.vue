@@ -7,9 +7,8 @@ const props = defineProps({
     categories: Array
 });
 
-const searchQuery = ref('');
-
-// // Obtener el nombre de la categoría por ID
+const searchQuery = ref(''); 
+// Obtener el nombre de la categoría por ID
 const getCategoryName = (category) => {
     return category?.name || 'Sin categoría';
 };
@@ -35,8 +34,6 @@ const filteredOffers = computed(() => {
 });
 
 </script>
-
-
 
 <template>
     <Navbar />

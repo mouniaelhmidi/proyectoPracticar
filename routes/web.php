@@ -52,11 +52,17 @@ Route::delete('/eliminar/{id}', [SubjectController::class, 'destroy'])->name('ru
 
 //RUTAS OFFER CONTROLLER
 Route::get('/addoffer', [OfferController::class, 'index'])->name('offer.index');
+
 Route::post('/saveoffer', [OfferController::class, 'save'])->name('offer.save');
+
 Route::get('/offer/{id}', [OfferController::class, 'show'])->name('offer.show');
+
 Route::get('/offeredit/{id}', [OfferController::class, 'edit'])->name('offer.edit');
+
 Route::put('/offeredit/{id}', [OfferController::class, 'update'])->name('offer.update'); 
+
 Route::post('/offerdelete/{id}', [OfferController::class, 'destroy'])->name('offer.delete');
+
 Route::get('/offerlist', [OfferController::class, 'list'])->name('offer.list');
 
 
