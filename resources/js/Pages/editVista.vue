@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import { onMounted, computed } from 'vue';
+import Navbar from '@/Components/NavBar.vue'; 
+
 
 
 //el props

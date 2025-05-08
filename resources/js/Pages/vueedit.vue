@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
-
+import Navbar from '@/Components/NavBar.vue'; 
 
 //el props
 const props = defineProps({
@@ -22,7 +22,6 @@ const form = useForm({
     description: '',
     category_id: '',
 });
-
 onMounted (() => {
     // Aquí puedes cargar datos iniciales si es necesario
     form.id = props.offer.id;
@@ -39,6 +38,8 @@ const updateOffer = () => {
 </script>
 
 <template>
+    <Navbar />
+
     <div>
         <h1 class="text-2xl font-bold mb-4">Formulario para añadir oferta</h1>
         <!-- Inicio del formulario -->

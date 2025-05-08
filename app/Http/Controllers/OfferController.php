@@ -91,13 +91,13 @@ class OfferController extends Controller
     }
 
     //DESTROY: ELIMINA UN ELEMENTO DE LA BDD
-    public function destroy(Request $request){
+    public function destroy($id){
         //buscar por id 
-        $offer = Offer::find($request->id);
+        $offer = Offer::findOrFail($id);
         //eliminar el elemento de la bdd
         $offer->delete();
         //redirigir a la vista deseada
-        return redirect()->route('offer.index');
+        return redirect()->route('offer.list')->with('success', 'Oferta eliminada correctamente.');
         //RUTA: Route::delete('/offerdelete/{id}', [OfferController::class, 'destroy'])->name('offer.delete');
     }
 
@@ -112,5 +112,6 @@ class OfferController extends Controller
             'offers' => $offers,
             'categories' => $categories,
         ]);
+        //RUTA: Route::get('/offerlist', [OfferController::class, 'list'])->name('offer.list'); 
     }
 }

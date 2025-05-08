@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
+import axios from 'axios';
+import Navbar from '@/Components/NavBar.vue'; 
+
 
 const props = defineProps({
     offer: {
@@ -15,18 +18,20 @@ console.log(props.offer.categories.name);
 
 //delete con axios 
 const deleteOffer = (id) => {
+    console.log('ID a eliminar:', id);
+    console.log('Ruta generada:', route('offer.delete', { id }));
+
     if (confirm('¿Estás seguro de que deseas eliminar esta oferta?')) {
-        axios.delete(route('offer.delete', { id: id }))
-            .then(response => {
-                console.log(response.data.message);
-                window.location.href = '/addoffer'; // Redirigir después de eliminar
+        axios.post(route('offer.delete', { id }))
+            .then(() => {
+                alert('Oferta eliminada correctamente.');
+                window.location.href = '/offerlist'; // Redirigir a la lista después de eliminar
             })
-            .catch(error => {
-                console.error('Error al eliminar la materia:', error);
+            .catch((error) => {
+                console.error('Error al eliminar la oferta:', error);
             });
     }
 };
-
 
 </script>
 
@@ -80,6 +85,7 @@ const deleteOffer = (id) => {
     Hacer una tabla 
 
     -->
+    <Navbar />
 
 
     <div class="p-10 ">
@@ -98,7 +104,7 @@ const deleteOffer = (id) => {
                 </a>
             </button>
 
-            <button @click.prevent="deleteOffer" class="btn-danger" role="button" tabindex="0"
+            <button @click.prevent="deleteOffer(offer.id)" class="btn-danger" role="button" tabindex="0"
                 aria-label="Eliminar libro">
                 <span>Eliminar</span>
             </button>

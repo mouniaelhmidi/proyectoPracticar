@@ -9,6 +9,9 @@ class CategorySeed extends Seeder{
     //Run the database seeds.
     public function run(): void
     {
+        \App\Models\Category::factory(5)->create(); // Crea 5 categorías
+
+
         $categories = [
             'Informàtica',
             'Logistica',

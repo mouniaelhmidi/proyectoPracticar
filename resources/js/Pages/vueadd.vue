@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
+import Navbar from '@/Components/NavBar.vue'; 
+
 
 // // Inicializar el formulario con los campos requeridos
 const form = useForm({
@@ -30,6 +32,7 @@ function save() {
 </script>
 
 <template>
+    <Navbar />
     <div>
         <h1 class="text-2xl font-bold mb-4">Formulario para añadir oferta</h1>
         <!-- Inicio del formulario -->
@@ -54,8 +57,6 @@ function save() {
                     </option>
                 </select>
             </div>
-
-
             <!-- Botón Guardar -->
             <div class="col-span-2 flex justify-end mt-4">
                 <button type="submit"
