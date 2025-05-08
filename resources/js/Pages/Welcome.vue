@@ -1,7 +1,8 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import Navbar from '@/Components/NavBar.vue'; 
-import Footer from '@/Components/Footer.vue'; // 👈 Importa el footer
+import { ref } from 'vue';
+import Navbar from '@/Components/NavBar.vue';
+import Footer from '@/Components/Footer.vue';
 
 defineProps({
     user: {
@@ -9,14 +10,51 @@ defineProps({
         required: false,
     },
 });
+
+// const index = ref(0);
+
+// const textos = [
+//   'Benvingut al nostre projecte!',
+//   'Explora les funcionalitats disponibles.',
+//   'Recorda desar els teus progressos.',
+//   'Gracies per visitar-nos!'
+// ];
+
+// const next = () => {
+//   index.value = (index.value + 1) % textos.length;
+// };
+
+// const prev = () => {
+//   index.value = (index.value - 1 + textos.length) % textos.length;
+// };
 </script>
 
 <template>
     <Navbar />
+
     <Head title="Home" />
 
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 flex flex-col justify-between">
-        
+    <div
+        class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 flex flex-col justify-between">
+
+        <!-- <div class="w-full max-w-xl mx-auto p-4">
+            <div class="relative">
+                <p class="text-center">{{ textos[index] }}</p>
+
+                <div class="absolute top-1/2 left-0 transform -translate-y-1/2">
+                    <button @click="prev" class="bg-white px-2 py-1 rounded shadow">←</button>
+                </div>
+
+                <div class="absolute top-1/2 right-0 transform -translate-y-1/2">
+                    <button @click="next" class="bg-white px-2 py-1 rounded shadow">→</button>
+                </div>
+            </div>
+
+            <div class="flex justify-center gap-2 mt-2">
+                <span v-for="(s, i) in slides" :key="i" class="w-2 h-2 rounded-full"
+                    :class="i === index ? 'bg-black' : 'bg-gray-400'"></span>
+            </div>
+        </div> -->
         <!-- Hero Section -->
         <header class="bg-white wite:bg-gray-800 py-20 shadow-md">
             <div class="max-w-7xl mx-auto px-4 text-center">
@@ -27,11 +65,9 @@ defineProps({
                     Explora nuestras ofertas y categorías para encontrar lo que necesitas.
                 </p>
                 <div class="mt-8">
-                    <Link
-                        href="/offerlist"
-                        class="inline-block px-8 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition"
-                    >
-                        Ver Ofertas
+                    <Link href="/offerlist"
+                        class="inline-block px-8 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition">
+                    Ver Ofertas
                     </Link>
                 </div>
             </div>
