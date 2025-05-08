@@ -104,6 +104,7 @@ class OfferController extends Controller
     //EJEMPLO SOFT DELETE
 
 
+
     //LIST: MUESTRA TODOS LOS ELEMENTOS DE LA BDD
     public function list(){
         $offers = Offer::with('categories')->get(); // con relaciones si las necesitas
@@ -114,4 +115,6 @@ class OfferController extends Controller
         ]);
         //RUTA: Route::get('/offerlist', [OfferController::class, 'list'])->name('offer.list'); 
     }
+
+
 }

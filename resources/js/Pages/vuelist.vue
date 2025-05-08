@@ -41,44 +41,53 @@ const filteredOffers = computed(() => {
 <template>
     <Navbar />
 
-    <div class="p-10">
-        <h1 class="text-2xl font-bold mb-4">Lista de Ofertas</h1>
+    <div class="max-w-7xl mx-auto p-10">
+        <h1 class="text-3xl font-bold text-blue-800 mb-6 text-center">Lista de Ofertas</h1>
+
         <!-- Buscador -->
-        <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700" for="searchOffer">Buscar</label>
+        <div class="mb-6">
+            <label for="searchOffer" class="block text-sm font-medium text-blue-700 mb-1">Buscar Oferta</label>
             <input 
-                aria-label="searchOffer"
                 id="searchOffer"
                 type="text"
                 v-model="searchQuery"
-                class="w-full border-2 border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                class="w-full p-3 border border-blue-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Buscar por nombre, descripción o categoría"
             />
         </div>
 
         <!-- Tabla -->
-        <div class="overflow-x-auto">
-            <table class="min-w-full table-auto border-collapse border border-gray-300 text-left">
-                <thead>
-                    <tr class="bg-gray-200">
-                        <th class="border border-gray-300 px-4 py-2">Nombre</th>
-                        <th class="border border-gray-300 px-4 py-2">Descripción</th>
-                        <th class="border border-gray-300 px-4 py-2">Categoría</th>
-                        <th class="border border-gray-300 px-4 py-2">Acciones</th>
+        <div class="overflow-x-auto rounded-lg shadow-md border border-blue-200 bg-white">
+            <table class="min-w-full table-auto text-sm text-left text-blue-900">
+                <thead class="bg-blue-100 text-blue-700">
+                    <tr>
+                        <th class="px-6 py-3 border-b">Nombre</th>
+                        <th class="px-6 py-3 border-b">Descripción</th>
+                        <th class="px-6 py-3 border-b">Categoría</th>
+                        <th class="px-6 py-3 border-b text-center">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="offer in filteredOffers" :key="offer.id">
-                        <td class="border border-gray-300 px-4 py-2">{{ offer.name }}</td>
-                        <td class="border border-gray-300 px-4 py-2">{{ offer.description || 'Sin descripción' }}</td>
-                        <td class="border border-gray-300 px-4 py-2">{{ getCategoryName(offer.categories) }}</td>
-                        <td class="border border-gray-300 px-4 py-2">
-                            <a :href="`/offershow/${offer.id}`" class="text-blue-500 hover:underline">Ver Detalles</a>
+                    <tr v-for="offer in filteredOffers" :key="offer.id" class="hover:bg-blue-50">
+                        <td class="px-6 py-4 border-b">{{ offer.name }}</td>
+                        <td class="px-6 py-4 border-b">{{ offer.description || 'Sin descripción' }}</td>
+                        <td class="px-6 py-4 border-b">{{ getCategoryName(offer.categories) }}</td>
+                        <td class="px-6 py-4 border-b text-center">
+                            <a 
+                                :href="`/offer/${offer.id}`" 
+                                class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+                            >
+                                Ver Detalles
+                            </a>
                         </td>
+                    </tr>
+                    <tr v-if="filteredOffers.length === 0">
+                        <td colspan="4" class="text-center py-6 text-gray-500">No se encontraron ofertas.</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </template>
+
 

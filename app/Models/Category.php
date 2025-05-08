@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class Category extends Model
 {
-    //use HasFactory;
 
     protected $fillable = [
         'name',

@@ -34,10 +34,7 @@ const deleteOffer = (id) => {
 };
 
 </script>
-
-<template>
-
-    <!-- 
+ <!-- 
     Margenes en todos los lados = m
     Margen derecha y izquierda = mx
     Margen arriba y abajo = my
@@ -85,36 +82,42 @@ const deleteOffer = (id) => {
     Hacer una tabla 
 
     -->
-    <Navbar />
 
-
-    <div class="p-10 ">
-        <h1 class="text-2xl font-bold mb-4">Detalles de la Materia</h1>
-        <div class="border p-4 rounded shadow mb-6 w-18 bg-blue-700">
-            <p><strong>Nombre:</strong> {{ offer.name }}</p>
-            <p><strong>Descripción:</strong> {{ offer.description || 'Sin descripción' }}</p>
-            <p><strong>Categoria:</strong> {{ offer.categories.name }}</p>
-        </div>
-
-        <!-- botones editar y eliminar  -->
-        <div class="flex flex-col md:flex-row justify-end mt-6 gap-4">
-            <button class="btn-primary" role="button" tabindex="0" aria-label="Editar oferta">
-                <a :href="`/offeredit/${offer.id}`" class="flex items-center">
-                    <span>Editar</span>
+    <template>
+        <Navbar />
+    
+        <div class="max-w-3xl mx-auto p-8 mt-10 bg-blue-50 rounded-xl shadow-md">
+            <h1 class="text-3xl font-bold text-blue-800 mb-6 text-center">
+                Detalles de la Oferta
+            </h1>
+    
+            <!-- Tarjeta de información -->
+            <div class="bg-white border border-blue-300 rounded-lg p-6 shadow space-y-4">
+                <p><strong class="text-blue-700">Nombre:</strong> {{ offer.name }}</p>
+                <p><strong class="text-blue-700">Descripción:</strong> {{ offer.description || 'Sin descripción' }}</p>
+                <p><strong class="text-blue-700">Categoría:</strong> {{ offer.categories.name }}</p>
+            </div>
+    
+            <!-- Botones -->
+            <div class="flex flex-col md:flex-row justify-end gap-4 mt-8">
+                <a
+                    :href="`/offeredit/${offer.id}`"
+                    class="inline-block px-6 py-2 bg-yellow-400 text-white rounded-md hover:bg-yellow-500 transition font-semibold text-center"
+                    role="button"
+                    aria-label="Editar oferta"
+                >
+                    Editar
                 </a>
-            </button>
-
-            <button @click.prevent="deleteOffer(offer.id)" class="btn-danger" role="button" tabindex="0"
-                aria-label="Eliminar libro">
-                <span>Eliminar</span>
-            </button>
+    
+                <button
+                    @click.prevent="deleteOffer(offer.id)"
+                    class="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition font-semibold"
+                    role="button"
+                    aria-label="Eliminar oferta"
+                >
+                    Eliminar
+                </button>
+            </div>
         </div>
-
-
-    </div>
-
-
-
-
-
-</template>
+    </template>
+    

@@ -30,38 +30,75 @@ function save() {
 }
 
 </script>
-
 <template>
     <Navbar />
-    <div>
-        <h1 class="text-2xl font-bold mb-4">Formulario para añadir oferta</h1>
-        <!-- Inicio del formulario -->
-        <form @submit.prevent="save" enctype="multipart/form-data">
-            <!-- Campo Nombre -->
+
+    <div class="max-w-3xl mx-auto p-8 mt-10 bg-blue-200 rounded-xl shadow-md">
+        <h1 class="text-3xl font-bold text-center text-blue-800 mb-8">
+            Añadir Nueva Oferta
+        </h1>
+
+        <form @submit.prevent="save" enctype="multipart/form-data" class="space-y-6">
+            
+            <!-- Nombre -->
             <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
-                <input v-model="form.name" type="text" id="name"
-                    class="border p-2 rounded w-full h-10" placeholder="Escribe el nombre de la materia" required />
+                <label for="name" class="block text-sm font-medium text-blue-700 mb-1">
+                    Nombre
+                </label>
+                <input 
+                    v-model="form.name" 
+                    type="text" 
+                    id="name"
+                    placeholder="Escribe el nombre de la oferta"
+                    class="w-full border border-blue-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none bg-white"
+                    required
+                />
             </div>
+
+            <!-- Descripción -->
             <div>
-                <label for="description" class="block text-sm font-medium text-gray-700">Descripcion</label>
-                <input v-model="form.description" type="text" id="name"
-                    class="border p-2 rounded w-full h-10" placeholder="Escribe el nombre de la materia" required />
+                <label for="description" class="block text-sm font-medium text-blue-700 mb-1">
+                    Descripción
+                </label>
+                <input 
+                    v-model="form.description" 
+                    type="text" 
+                    id="description"
+                    placeholder="Breve descripción de la oferta"
+                    class="w-full border border-blue-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none bg-white"
+                    required
+                />
             </div>
+
+            <!-- Categoría -->
             <div>
-                <label for="category_id" class="block text-sm font-medium text-gray-700">Profesor</label>
-                <select v-model="form.category_id" id="teacher_id" class="border p-2 rounded w-full h-10" required>
-                    <option value="" disabled>Selecciona una categoria</option>
-                    <option v-for="category in categories" :key="category.id" :value="category.id">
-                        {{ category.name }} 
+                <label for="category_id" class="block text-sm font-medium text-blue-700 mb-1">
+                    Categoría
+                </label>
+                <select 
+                    v-model="form.category_id" 
+                    id="category_id"
+                    class="w-full border border-blue-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none bg-white"
+                    required
+                >
+                    <option value="" disabled>Selecciona una categoría</option>
+                    <option 
+                        v-for="category in categories" 
+                        :key="category.id" 
+                        :value="category.id"
+                    >
+                        {{ category.name }}
                     </option>
                 </select>
             </div>
-            <!-- Botón Guardar -->
-            <div class="col-span-2 flex justify-end mt-4">
-                <button type="submit"
-                    class="border border-red-300 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400">
-                    Guardar Materia
+
+            <!-- Botón -->
+            <div class="text-right">
+                <button
+                    type="submit"
+                    class="bg-blue-600 text-white font-semibold px-6 py-2 rounded-md hover:bg-blue-700 transition"
+                >
+                    Guardar Oferta
                 </button>
             </div>
         </form>
