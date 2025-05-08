@@ -16,7 +16,7 @@ class OfferController extends Controller
         //llamar a los modelos 
         $offers = Offer::all(); //ofertas
         $categories = Category::all(); //categorias el seed
-        
+
         return Inertia::render('vueadd', [ //addProfe es el nombre de la vista 
             'offers' => $offers,
             'categories' => $categories,
@@ -103,7 +103,15 @@ class OfferController extends Controller
     }
 
     //EJEMPLO SOFT DELETE
-
+    // public function delete(Request $request){
+    //     //dd($request);
+    //     $offer = Offer::findOrFail($request->id);
+    //     $offer->deleted = true;
+    //     $offer->deleted_at =  now();
+    //     $offer->save();
+    //     return to_route('offer.list');
+    //    Route::post('/offerdelete', [OfferController::class, 'delete'])->name('offer.destroy');
+    // }
 
 
     //LIST: MUESTRA TODOS LOS ELEMENTOS DE LA BDD
