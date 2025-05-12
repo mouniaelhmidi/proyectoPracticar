@@ -11,6 +11,8 @@ defineProps({
     },
 });
 
+const cookiesAccepted = ref(false);
+
 if (localStorage.getItem("cookies") === "true") {
     cookiesAccepted.value = true;
 }
@@ -19,7 +21,6 @@ const acceptCookies = () => {
     cookiesAccepted.value = true;
     localStorage.setItem("cookies", "true");
 }
-
 // const index = ref(0);
 
 // const textos = [
@@ -87,8 +88,8 @@ const acceptCookies = () => {
                 <h2 class="text-green-800 text-4xl font-extrabold">Avís de cookies</h2>
                 <p class="text-black">Aquesta web no fa servir cookies pero et mostro un avís perque soc bona gent! :)</p>
                 <br>
-                <div class="inline-flex justify-end w-full">
-                    <button @click="acceptCookies" class="text-black">Ok</button>
+                <div class="inline-flex justify-end w-full text-black">
+                    <button @click="acceptCookies" >Ok</button>
                 </div>
             </div>
         </div>
