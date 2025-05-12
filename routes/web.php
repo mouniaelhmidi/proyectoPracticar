@@ -65,6 +65,8 @@ Route::post('/offerdelete/{id}', [OfferController::class, 'destroy'])->name('off
 
 Route::get('/offerlist', [OfferController::class, 'list'])->name('offer.list');
 
+Route::get('/offers/filter', [OfferController::class, 'filter'])->name('offer.filter');
+
 
  
 

@@ -14,7 +14,7 @@ class Offer extends Model
     ];
 
     //relacion uno a muchos
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
     }

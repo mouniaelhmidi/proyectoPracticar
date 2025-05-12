@@ -116,13 +116,31 @@ class OfferController extends Controller
 
     //LIST: MUESTRA TODOS LOS ELEMENTOS DE LA BDD
     public function list(){
-        $offers = Offer::with('categories')->get(); // con relaciones si las necesitas
+        $offers = Offer::with('category')->paginate(10); // con relaciones si las necesitas
         $categories = Category::all();
         return Inertia::render('vuelist', [
             'offers' => $offers,
             'categories' => $categories,
         ]);
         //RUTA: Route::get('/offerlist', [OfferController::class, 'list'])->name('offer.list'); 
+    }
+
+    //FILTER: FILTRA LOS ELEMENTOS DE LA BDD
+
+    public function filter(Request $request){
+        $query = Offer::query();
+
+        if ($request->has('search') && $request->search) {
+            $query->where('name', 'like', '%' . $request->search . '%')
+                ->orWhere('description', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->has('category') && $request->category !== 'all') {
+            $query->where('category_id', $request->category);
+        }
+
+        $offers = $query->with('category')->paginate(10);
+        return response()->json($offers);
     }
 
 

@@ -11,6 +11,15 @@ defineProps({
     },
 });
 
+if (localStorage.getItem("cookies") === "true") {
+    cookiesAccepted.value = true;
+}
+
+const acceptCookies = () => {
+    cookiesAccepted.value = true;
+    localStorage.setItem("cookies", "true");
+}
+
 // const index = ref(0);
 
 // const textos = [
@@ -72,6 +81,17 @@ defineProps({
                 </div>
             </div>
         </header>
+
+        <div v-if="!cookiesAccepted" class="bg-black/80 absolute min-w-full min-h-full z-40 start-0 top-0 flex justify-center items-center">
+            <div class="w-1/2 min-h-[180px] bg-green-200 border-b-4 rounded-lg shadow-md border-b-green-800 p-4">
+                <h2 class="text-green-800 text-4xl font-extrabold">Avís de cookies</h2>
+                <p class="text-black">Aquesta web no fa servir cookies pero et mostro un avís perque soc bona gent! :)</p>
+                <br>
+                <div class="inline-flex justify-end w-full">
+                    <button @click="acceptCookies" class="text-black">Ok</button>
+                </div>
+            </div>
+        </div>
 
         <!-- Footer separado -->
         <Footer />
