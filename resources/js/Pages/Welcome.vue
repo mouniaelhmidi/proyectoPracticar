@@ -20,7 +20,8 @@ if (localStorage.getItem("cookies") === "true") {
 const acceptCookies = () => {
     cookiesAccepted.value = true;
     localStorage.setItem("cookies", "true");
-}
+} 
+
 // const index = ref(0);
 
 // const textos = [
