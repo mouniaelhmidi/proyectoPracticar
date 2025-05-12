@@ -5,6 +5,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import { ref } from "vue";
 
 const form = useForm({
     name: '',
@@ -13,11 +14,36 @@ const form = useForm({
     password_confirmation: '',
 });
 
+
+//VALIDAR CONTRASEÑA 
+const invalidPwd = ref(false);
+
 const submit = () => {
-    form.post(route('register'), {
+    if (validatePassword()) {
+        form.post(route('register'), {
         onFinish: () => form.reset('password', 'password_confirmation'),
-    });
+        });
+    } else {
+        invalidPwd.value = true;
+    }
+    
 };
+const validatePassword = () => {
+    let password = form.password;
+
+    if (password.length < 6) {
+        return false;
+    }
+
+    for (let i = 0; i < password.length; i++) {
+        if (password.charAt(i) == " ") {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 </script>
 
 <template>
@@ -69,6 +95,7 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.password" />
+                <InputError message="Contrasenya invàlida (6 caràcters i sense espais)." v-if="invalidPwd"></InputError>
             </div>
 
             <div class="mt-4">
